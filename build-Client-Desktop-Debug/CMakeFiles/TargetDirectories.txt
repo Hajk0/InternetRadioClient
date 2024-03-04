@@ -1,0 +1,8 @@
+/home/hajk0/Desktop/Studia/Semestr5/SK2/Client/build-Client-Desktop-Debug/CMakeFiles/Client.dir
+/home/hajk0/Desktop/Studia/Semestr5/SK2/Client/build-Client-Desktop-Debug/CMakeFiles/edit_cache.dir
+/home/hajk0/Desktop/Studia/Semestr5/SK2/Client/build-Client-Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/home/hajk0/Desktop/Studia/Semestr5/SK2/Client/build-Client-Desktop-Debug/CMakeFiles/list_install_components.dir
+/home/hajk0/Desktop/Studia/Semestr5/SK2/Client/build-Client-Desktop-Debug/CMakeFiles/install.dir
+/home/hajk0/Desktop/Studia/Semestr5/SK2/Client/build-Client-Desktop-Debug/CMakeFiles/install/local.dir
+/home/hajk0/Desktop/Studia/Semestr5/SK2/Client/build-Client-Desktop-Debug/CMakeFiles/install/strip.dir
+/home/hajk0/Desktop/Studia/Semestr5/SK2/Client/build-Client-Desktop-Debug/CMakeFiles/Client_autogen.dir
