@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <vector>
+#include <QTableWidget>
+#include <QTableWidgetItem>
 
 namespace Ui {
 class queueUpSong;
@@ -24,10 +26,13 @@ private slots:
 
     void on_buttonBox_rejected();
 
+    void reject();
+
 private:
     Ui::queueUpSong *ui;
-    queueUpSong *queueUpSongWindow;
-    std::vector<std::string> availableSongsVector;
+    std::vector<QString> availableSongsVector;
+    QTableWidget *tableWidget;
+
 
 };
 

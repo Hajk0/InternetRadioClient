@@ -39,15 +39,19 @@ void MainWindow::on_btn_connect_clicked()
 
 void MainWindow::on_btn_add_queue_clicked(){
     qDebug() << "Add to queue button pressed.\n";
-    this -> hide();
-    queueUpSongWindow = new queueUpSong(this);
-    connect(queueUpSongWindow, &queueUpSong::closed, this, &MainWindow::resumeMainWindow);
-    queueUpSongWindow -> show();
+
+    if(!queueUpSongWindow){
+        this -> hide();
+        queueUpSongWindow = new queueUpSong;
+        queueUpSongWindow -> setWindowTitle("queue-up song window");
+        connect(queueUpSongWindow, &queueUpSong::closed, this, &MainWindow::resumeMainWindow);
+    }
 }
 
 void MainWindow::resumeMainWindow(){
     qDebug() << "Resumed main window";
     this -> show();
     delete queueUpSongWindow;
+    queueUpSongWindow = nullptr;
 }
 

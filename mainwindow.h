@@ -22,6 +22,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+    void resumed();
+
 private slots:
     void on_btn_connect_clicked();
     void on_btn_add_queue_clicked();
