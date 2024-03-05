@@ -18,9 +18,10 @@ class queueUpSong : public QDialog
     Q_OBJECT
 
 public:
-    explicit queueUpSong(QWidget *parent = nullptr);
+    explicit queueUpSong(QWidget *parent = nullptr, const string& message = "");
     ~queueUpSong();
     string getSongName();
+    void setAvaibleSongs(std::string message);
 
 signals:
     void closed();

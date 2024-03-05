@@ -42,11 +42,13 @@ void MainWindow::on_btn_connect_clicked()
 void MainWindow::on_btn_add_queue_clicked()
 {
     qDebug() << "Add to queue button pressed.\n";
-    qDebug() << "Avaiable songs: " << this->client.getAvaiableSongs();
+    string message = this->client.getAvaiableSongs();
+    qDebug() << "Avaiable songs: " << message;
 
     if(!queueUpSongWindow){
         this -> hide();
-        queueUpSongWindow = new queueUpSong;
+        queueUpSongWindow = new queueUpSong(nullptr, message);
+        //queueUpSongWindow->setAvaibleSongs(message);
         queueUpSongWindow -> setWindowTitle("queue-up song window");
         connect(queueUpSongWindow, &queueUpSong::closed, this, &MainWindow::resumeMainWindowReject);
         connect(queueUpSongWindow, &queueUpSong::accepted, this, &MainWindow::resumeMainWindowAccept);

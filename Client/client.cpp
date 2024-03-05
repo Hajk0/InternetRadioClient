@@ -153,7 +153,7 @@ string Client::getAvaiableSongs() {
     string messageReceived;
 
     int messageLength;
-    int bytesReceived = recv(this->clientSock, &messageLength, sizeof(messageLength), 0);
+    recv(this->clientSock, &messageLength, sizeof(messageLength), 0);
 
     int totalBytesReceived = 0;
     while (totalBytesReceived < messageLength) {
