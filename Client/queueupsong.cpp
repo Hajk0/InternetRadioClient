@@ -34,6 +34,7 @@ queueUpSong::queueUpSong(QWidget *parent, const string& message)
     ui -> tableWidget -> setColumnWidth(0, columnWidth);
 
     connect(ui->tableWidget, &QTableWidget::itemSelectionChanged, this, &queueUpSong::onTableItemSelectionChanged);
+
 }
 
 queueUpSong::~queueUpSong()
@@ -44,7 +45,6 @@ queueUpSong::~queueUpSong()
 
 void queueUpSong::on_buttonBox_accepted()
 {
-
     emit accepted();
 }
 

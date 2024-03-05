@@ -7,6 +7,11 @@
 #include "ui_queueupsong.h"
 #include <QMainWindow>
 #include <QDebug>
+#include <QFileDialog>
+#include <QDir>
+#include <QFont>
+#include <iostream>
+#include <QPixmap>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -31,6 +36,7 @@ private slots:
     void on_btn_skip_clicked();
     void resumeMainWindowReject();
     void resumeMainWindowAccept();
+    void on_btn_upload_song_clicked();
 
 private:
     Ui::MainWindow *ui;

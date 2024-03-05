@@ -35,13 +35,11 @@ private slots:
     void onTableItemSelectionChanged();
 
 
-
 private:
     Ui::queueUpSong *ui;
     std::vector<string> availableSongsVector;
     QTableWidget *tableWidget;
     string selectedSong;
-
 
 };
 
