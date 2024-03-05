@@ -1,9 +1,0 @@
-/home/sanguing/Downloads/InternetRadioClient/InternetRadioClient/build-Client-Desktop-Debug/CMakeFiles/Client.dir
-/home/sanguing/Downloads/InternetRadioClient/InternetRadioClient/build-Client-Desktop-Debug/CMakeFiles/edit_cache.dir
-/home/sanguing/Downloads/InternetRadioClient/InternetRadioClient/build-Client-Desktop-Debug/CMakeFiles/rebuild_cache.dir
-/home/sanguing/Downloads/InternetRadioClient/InternetRadioClient/build-Client-Desktop-Debug/CMakeFiles/list_install_components.dir
-/home/sanguing/Downloads/InternetRadioClient/InternetRadioClient/build-Client-Desktop-Debug/CMakeFiles/install.dir
-/home/sanguing/Downloads/InternetRadioClient/InternetRadioClient/build-Client-Desktop-Debug/CMakeFiles/install/local.dir
-/home/sanguing/Downloads/InternetRadioClient/InternetRadioClient/build-Client-Desktop-Debug/CMakeFiles/install/strip.dir
-/home/sanguing/Downloads/InternetRadioClient/InternetRadioClient/build-Client-Desktop-Debug/CMakeFiles/Client_autogen_timestamp_deps.dir
-/home/sanguing/Downloads/InternetRadioClient/InternetRadioClient/build-Client-Desktop-Debug/CMakeFiles/Client_autogen.dir
