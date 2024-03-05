@@ -8,8 +8,8 @@ queueUpSong::queueUpSong(QWidget *parent, const string& message)
     : QDialog(parent)
     , ui(new Ui::queueUpSong)
 {
-    qDebug() << message;
-    qDebug() << "Queue Up Song Window opened";
+    //qDebug() << message;
+    //qDebug() << "Queue Up Song Window opened";
     ui->setupUi(this);
     this->show();
     selectedSong = "";
@@ -86,7 +86,7 @@ void queueUpSong::setAvaibleSongs(string message) {
 
     while (std::getline(ssmess, songName, ';')) {
         this->availableSongsVector.push_back(songName);
-        qDebug() << songName;
+        //qDebug() << songName;
     }
 
     for (const auto& elem : this->availableSongsVector) {
