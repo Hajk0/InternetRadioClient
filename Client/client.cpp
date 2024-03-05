@@ -142,3 +142,31 @@ int Client::skipSong() {
 
     return 0;
 }
+
+string Client::getAvaiableSongs() {
+    if (send(this->clientSock, "SHOW SONGS", 10, 0) == -1) {
+        perror("Sending request failed");
+        close(this->clientSock);
+        return "";
+    }
+
+    string messageReceived;
+
+    int messageLength;
+    int bytesReceived = recv(this->clientSock, &messageLength, sizeof(messageLength), 0);
+
+    int totalBytesReceived = 0;
+    while (totalBytesReceived < messageLength) {
+        char buffer[16]; // TODO(zmien, wartosc niska do testowania)
+        int bytesRead = recv(this->clientSock, buffer, sizeof(buffer), 0);
+        if (bytesRead <= 0) {
+            std::cerr << "Error during receiving data" << std::endl;
+            close(this->clientSock);
+            return "";
+        }
+        messageReceived += string(buffer).substr(0, bytesRead); // sprawdz czy nie powinno być (bytesRead - 1)
+        totalBytesReceived += bytesRead;
+    }
+
+    return messageReceived;
+}

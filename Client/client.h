@@ -23,6 +23,7 @@ public:
     void disconnectFromServer();
     int addToQueue(string);
     int skipSong();
+    string getAvaiableSongs();
     //int connectToServerQT();
 };
 
