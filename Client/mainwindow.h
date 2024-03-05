@@ -12,6 +12,7 @@
 #include <QFont>
 #include <iostream>
 #include <QPixmap>
+#include <QObject>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -36,7 +37,7 @@ private slots:
     void on_btn_skip_clicked();
     void resumeMainWindowReject();
     void resumeMainWindowAccept();
-    void on_btn_upload_song_clicked();
+    void on_btn_add_file_clicked();
 
 private:
     Ui::MainWindow *ui;

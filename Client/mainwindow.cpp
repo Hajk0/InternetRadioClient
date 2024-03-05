@@ -32,7 +32,6 @@ MainWindow::MainWindow(QWidget *parent)
     }
     QPixmap logoPixmap(fullPath);
 
-    ui -> fieldFileLocation ->setText(fullPath);
     ui -> logo_label -> setFixedWidth(200);
     ui -> logo_label -> setFixedHeight(125);
     ui -> logo_label -> setAlignment(Qt::AlignHCenter);
@@ -122,10 +121,18 @@ void MainWindow::resumeMainWindowAccept()
 }
 
 
-void MainWindow::on_btn_upload_song_clicked()
+void MainWindow::on_btn_add_file_clicked()
 {
-    QString appDirrPath = QCoreApplication::applicationDirPath();
-    QString songToUpload = QFileDialog::getOpenFileName(this, tr("Open File"), appDirrPath, tr("Wav Files (*.wav)"));
-    //ui -> fieldQueueSongName -> setText(songToUpload);
+    if (this -> connected){
+        QString appDirrPath = QCoreApplication::applicationDirPath();
+        QString songToUpload = QFileDialog::getOpenFileName(this, tr("Open File"), appDirrPath, tr("Wav Files (*.wav)"));
+        ui -> fieldFileLocation -> setText(songToUpload);
+    } else {
+        QMessageBox::warning(this, "WARNING", "You need to be connected in order to upload a song.");
+    }
+
+    //TO DO: BACKEND -> jak sie skonczy to ui ->fieldFileLocation -> setText("Upload completed!");
+    //path do pliku znajduje sie w zmiennej songToUpload
+    //widoczne sa pliki tylko z rozszerzeniem .wav i foldery w eksploratorze(tzw. QFileDialog)
 }
 
