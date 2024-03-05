@@ -25,6 +25,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         client.h client.cpp
         stream.h stream.cpp
+        queueupsong.cpp queueupsong.h queueupsong.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Client APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -40,6 +41,7 @@ else()
     else()
         add_executable(Client
             ${PROJECT_SOURCES}
+            client.cpp client.h queueupsong.cpp queueupsong.h queueupsong.ui stream.cpp stream.h
         )
     endif()
 endif()

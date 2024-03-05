@@ -4,7 +4,6 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include <arpa/inet.h>
-
 using namespace std;
 
 Client::Client() {
@@ -105,7 +104,7 @@ void Client::disconnectFromServer() {
     std::cout << "Disconnected from server" << this->clientSock << std::endl;
 }
 
-int Client::addToQueue(string& songName) {
+int Client::addToQueue(const string songName) {
     std::cout << songName << std::endl;
 
     // Calculate the size needed for the request buffer

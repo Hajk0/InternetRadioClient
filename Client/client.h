@@ -21,7 +21,7 @@ public:
     Client();
     int connectToServer();
     void disconnectFromServer();
-    int addToQueue(string& songName);
+    int addToQueue(string);
     int skipSong();
     //int connectToServerQT();
 };

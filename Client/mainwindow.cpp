@@ -2,7 +2,6 @@
 #include "./ui_mainwindow.h"
 #include "client.h"
 #include "stream.h"
-
 #include <QDebug>
 #include <thread>
 
@@ -42,10 +41,15 @@ void MainWindow::on_btn_connect_clicked()
 
 void MainWindow::on_btn_add_queue_clicked()
 {
-    qDebug() << "Add to queue button clicked";
-    std::string songName = MainWindow::ui->fieldQueueSongName->text().toStdString();
-    qDebug() << songName;
-    client.addToQueue(songName);
+    qDebug() << "Add to queue button pressed.\n";
+
+    if(!queueUpSongWindow){
+        this -> hide();
+        queueUpSongWindow = new queueUpSong;
+        queueUpSongWindow -> setWindowTitle("queue-up song window");
+        connect(queueUpSongWindow, &queueUpSong::closed, this, &MainWindow::resumeMainWindowReject);
+        connect(queueUpSongWindow, &queueUpSong::accepted, this, &MainWindow::resumeMainWindowAccept);
+    }
 }
 
 
@@ -53,4 +57,22 @@ void MainWindow::on_btn_skip_clicked()
 {
     qDebug() << "Skip song button clicked";
     this->client.skipSong();
+}
+
+
+void MainWindow::resumeMainWindowReject(){
+    qDebug() << "Resumed main window after reject";
+    this -> show();
+    delete queueUpSongWindow;
+    queueUpSongWindow = nullptr;
+}
+
+
+void MainWindow::resumeMainWindowAccept(){
+    qDebug() << "Resumed main window after accept";
+    this -> show();
+    string pom = queueUpSongWindow ->getSongName();
+    client.addToQueue(pom);
+    delete queueUpSongWindow;
+    queueUpSongWindow = nullptr;
 }

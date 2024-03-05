@@ -3,8 +3,10 @@
 
 #include "client.h"
 #include "stream.h"
-
+#include "queueupsong.h"
+#include "ui_queueupsong.h"
 #include <QMainWindow>
+#include <QDebug>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,15 +22,19 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+    void resumed();
+
 private slots:
     void on_btn_connect_clicked();
-
     void on_btn_add_queue_clicked();
-
     void on_btn_skip_clicked();
+    void resumeMainWindowReject();
+    void resumeMainWindowAccept();
 
 private:
     Ui::MainWindow *ui;
+    queueUpSong *queueUpSongWindow;
     bool connected = false;
     Client client;
     Stream stream;
