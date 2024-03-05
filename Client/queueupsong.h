@@ -18,7 +18,7 @@ class queueUpSong : public QDialog
     Q_OBJECT
 
 public:
-    explicit queueUpSong(QWidget *parent = nullptr);
+    queueUpSong(QWidget *parent = nullptr);
     ~queueUpSong();
     string getSongName();
 
@@ -34,13 +34,11 @@ private slots:
     void onTableItemSelectionChanged();
 
 
-
 private:
     Ui::queueUpSong *ui;
     std::vector<string> availableSongsVector;
     QTableWidget *tableWidget;
     string selectedSong;
-
 
 };
 
