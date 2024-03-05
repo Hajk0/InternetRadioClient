@@ -73,6 +73,8 @@ void MainWindow::on_btn_connect_clicked()
 void MainWindow::on_btn_add_queue_clicked()
 {
     qDebug() << "Add to queue button pressed.\n";
+    string message = this->client.getAvaiableSongs();
+    qDebug() << "Avaiable songs: " << message;
 
     if(!queueUpSongWindow){
         if (this -> connected) {

@@ -1,11 +1,14 @@
 #include "queueupsong.h"
 #include "ui_queueupsong.h"
 #include "mainwindow.h"
+#include <iostream>
+#include <sstream>
 
-queueUpSong::queueUpSong(QWidget *parent)
+queueUpSong::queueUpSong(QWidget *parent, const string& message)
     : QDialog(parent)
     , ui(new Ui::queueUpSong)
 {
+    qDebug() << message;
     qDebug() << "Queue Up Song Window opened";
     ui->setupUi(this);
     this->show();
@@ -13,7 +16,8 @@ queueUpSong::queueUpSong(QWidget *parent)
     tableWidget = new QTableWidget(this);
 
     QStringList header = {"Song"};
-    availableSongsVector = {"POLAND-LILYACHTY", "PostMalone-UpThere"};
+    this->setAvaibleSongs(message);
+    // availableSongsVector = {"POLAND-LILYACHTY", "PostMalone-UpThere"};
     int numRows = availableSongsVector.size();
     int numCols = 1;
 
@@ -74,4 +78,18 @@ void queueUpSong::onTableItemSelectionChanged()
 
 string queueUpSong::getSongName() {
     return this->selectedSong;
+}
+
+void queueUpSong::setAvaibleSongs(string message) {
+    stringstream ssmess(message);
+    string songName;
+
+    while (std::getline(ssmess, songName, ';')) {
+        this->availableSongsVector.push_back(songName);
+        qDebug() << songName;
+    }
+
+    for (const auto& elem : this->availableSongsVector) {
+        cout << "elem: " << elem << endl;
+    }
 }
