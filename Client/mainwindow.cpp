@@ -79,7 +79,7 @@ void MainWindow::on_btn_add_queue_clicked()
     if(!queueUpSongWindow){
         if (this -> connected) {
             this -> hide();
-            queueUpSongWindow = new queueUpSong;
+            queueUpSongWindow = new queueUpSong(nullptr, message);
             queueUpSongWindow -> setWindowTitle("queue-up song window");
             connect(queueUpSongWindow, &queueUpSong::closed, this, &MainWindow::resumeMainWindowReject);
             connect(queueUpSongWindow, &queueUpSong::accepted, this, &MainWindow::resumeMainWindowAccept);
