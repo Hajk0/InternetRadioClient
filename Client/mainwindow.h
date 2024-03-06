@@ -45,6 +45,5 @@ private:
     bool connected = false;
     Client client;
     Stream stream;
-
 };
 #endif // MAINWINDOW_H
