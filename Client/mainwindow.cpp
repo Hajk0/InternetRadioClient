@@ -55,14 +55,9 @@ void MainWindow::on_btn_connect_clicked()
 
         std::thread streamThread = std::thread(&Stream::connectToStream, std::ref(stream));
         streamThread.detach();
-      
-        int connectionFailed = client.connectToServer();
-
-        if (connectionFailed == 0) {
-            ui -> btn_connect->setStyleSheet("QPushButton {background-color: green}");
-            ui -> btn_connect -> setText("Connected");
-        }
-
+        client.connectToServer();
+        ui -> btn_connect->setStyleSheet("QPushButton {background-color: green}");
+        ui -> btn_connect -> setText("Disconnect");
         //std::thread clientThread = std::thread(&Client::connectToServer, std::ref(client));
         //clientThread.detach();
 
@@ -71,7 +66,7 @@ void MainWindow::on_btn_connect_clicked()
         client.disconnectFromServer();
         this->connected = false;
         ui -> btn_connect->setStyleSheet("QPushButton {background-color: red}");
-        ui -> btn_connect -> setText("Disconnected");
+        ui -> btn_connect -> setText("Connect");
     }
 }
 

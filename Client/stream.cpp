@@ -12,17 +12,16 @@
 std::vector<char> audioBuffer;
 std::mutex audioMutex;
 std::condition_variable audioCV;
-// bool quit = false;
-bool Stream::quit;
+bool quit = false;
 bool readyToSend = false;
 
 Stream::Stream() {
     this->PORT = 12343;
-    //Stream::quit = false;
+    // this->quit = false;
 }
 
 int Stream::connectToStream() {
-    Stream::quit = false;
+    quit = false;
     if ((this->sock = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
         perror("Creating socket failed");
         return 1;
