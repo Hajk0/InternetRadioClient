@@ -1,7 +1,6 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include "sender.h"
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <unistd.h>
@@ -25,7 +24,6 @@ public:
     int addToQueue(string);
     int skipSong();
     string getAvaiableSongs();
-    int sendSong(string songPath);
     //int connectToServerQT();
 };
 
