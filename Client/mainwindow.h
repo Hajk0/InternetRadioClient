@@ -45,5 +45,7 @@ private:
     bool connected = false;
     Client client;
     Stream stream;
+    
+    std::vector<string> songsQueue;
 };
 #endif // MAINWINDOW_H
