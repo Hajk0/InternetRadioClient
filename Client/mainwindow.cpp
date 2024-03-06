@@ -60,7 +60,6 @@ void MainWindow::on_btn_connect_clicked()
 
         if (connectionFailed == 0) {
             ui -> btn_connect->setStyleSheet("QPushButton {background-color: green}");
-            ui -> btn_connect -> setText("Connected");
         }
 
         //std::thread clientThread = std::thread(&Client::connectToServer, std::ref(client));
@@ -71,7 +70,6 @@ void MainWindow::on_btn_connect_clicked()
         client.disconnectFromServer();
         this->connected = false;
         ui -> btn_connect->setStyleSheet("QPushButton {background-color: red}");
-        ui -> btn_connect -> setText("Disconnected");
     }
 }
 
@@ -121,6 +119,7 @@ void MainWindow::resumeMainWindowReject()
 void MainWindow::resumeMainWindowAccept()
 {
     qDebug() << "Resumed main window after accept";
+    this -> show();
     string pom = queueUpSongWindow ->getSongName();
     client.addToQueue(pom);
     delete queueUpSongWindow;
