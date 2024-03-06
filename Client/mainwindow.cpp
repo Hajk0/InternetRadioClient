@@ -32,7 +32,6 @@ MainWindow::MainWindow(QWidget *parent)
         fullPath.remove(pos, build_dir.length());
     }
     QPixmap logoPixmap(fullPath);
-
     ui -> logo_label -> setFixedWidth(200);
     ui -> logo_label -> setFixedHeight(125);
     ui -> logo_label -> setAlignment(Qt::AlignHCenter);
