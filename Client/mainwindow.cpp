@@ -11,10 +11,11 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui -> btn_connect -> setText("Connect");
     ui -> fieldFileLocation -> setReadOnly(true);
     ui -> btn_connect->setStyleSheet("QPushButton {background-color: red}");
     ui -> label -> setText("<b>UPLOAD YOUR OWN SONG TO QUEUE IT UP!</b>");
-    ui -> label_2 -> setText("<b>NOW PLAYING:</b>");
+    //ui -> label_2 -> setText("<b>NOW PLAYING:</b>");
     ui -> label_4 -> setText("<b><u>INTERNET RADIO</u></b>");
     ui -> label_4 -> setFixedHeight(50);
     QFont font = ui -> label_4 -> font();
@@ -32,7 +33,6 @@ MainWindow::MainWindow(QWidget *parent)
         fullPath.remove(pos, build_dir.length());
     }
     QPixmap logoPixmap(fullPath);
-
     ui -> logo_label -> setFixedWidth(200);
     ui -> logo_label -> setFixedHeight(125);
     ui -> logo_label -> setAlignment(Qt::AlignHCenter);
@@ -57,6 +57,7 @@ void MainWindow::on_btn_connect_clicked()
         streamThread.detach();
         client.connectToServer();
         ui -> btn_connect->setStyleSheet("QPushButton {background-color: green}");
+        ui -> btn_connect -> setText("Disconnect");
         //std::thread clientThread = std::thread(&Client::connectToServer, std::ref(client));
         //clientThread.detach();
 
@@ -65,6 +66,7 @@ void MainWindow::on_btn_connect_clicked()
         client.disconnectFromServer();
         this->connected = false;
         ui -> btn_connect->setStyleSheet("QPushButton {background-color: red}");
+        ui -> btn_connect -> setText("Connect");
     }
 }
 
@@ -114,7 +116,6 @@ void MainWindow::resumeMainWindowReject()
 void MainWindow::resumeMainWindowAccept()
 {
     qDebug() << "Resumed main window after accept";
-    this -> show();
     string pom = queueUpSongWindow ->getSongName();
     client.addToQueue(pom);
     delete queueUpSongWindow;
