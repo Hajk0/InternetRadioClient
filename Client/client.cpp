@@ -1,9 +1,12 @@
 #include "client.h"
+#include "sender.h"
 #include <iostream>
 #include <cstring>
 #include <sys/socket.h>
 #include <unistd.h>
 #include <arpa/inet.h>
+#include <string>
+
 using namespace std;
 
 Client::Client() {
@@ -169,4 +172,40 @@ string Client::getAvaiableSongs() {
     }
 
     return messageReceived;
+}
+
+int Client::sendSong(string songPath) {
+    string songName;
+    size_t lastSlash = songPath.find_last_of('/');
+    if (lastSlash != string::npos) {
+        songName = songPath.substr(lastSlash + 1, songPath.length() - 4 - lastSlash - 1);
+    } else {
+        songName = songPath.substr(0, songPath.length() - 4);
+    }
+
+    cout << "Song Name: " << songName << endl << "Song Path" << songPath << endl;
+
+    int requestSize = 10 + songName.length();
+    char *buffer = new char[requestSize];
+    strcpy(buffer, "ADD SONG ");
+    strcat(buffer, songName.c_str());
+
+
+    if (send(this->clientSock, buffer, requestSize, 0) == -1) {
+        perror("Sending request failed");
+        close(this->clientSock);
+        delete[] buffer;
+        return 1;
+    }
+
+    delete[] buffer;
+
+    sleep(1);
+
+    Sender sender = Sender(this->ip, songPath);
+    sender.connectToServer();
+    sender.sendSong();
+    sender.disconnectFromServer();
+
+    return 0;
 }
