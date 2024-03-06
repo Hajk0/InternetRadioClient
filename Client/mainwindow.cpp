@@ -2,7 +2,6 @@
 #include "./ui_mainwindow.h"
 #include "client.h"
 #include "stream.h"
-#include "sender.h"
 #include <QDebug>
 #include <thread>
 
@@ -50,8 +49,8 @@ void MainWindow::on_btn_connect_clicked()
 {
     qDebug() << "Connect/Disconnect button clicked";
     if (this->connected == 0) {
-        this->client = Client();
-        this->stream = Stream();
+        client = Client();
+        stream = Stream();
 
         std::thread streamThread = std::thread(&Stream::connectToStream, std::ref(stream));
         streamThread.detach();
@@ -129,11 +128,9 @@ void MainWindow::resumeMainWindowAccept()
 
 void MainWindow::on_btn_add_file_clicked()
 {
-
-    QString songToUpload;
     if (this -> connected){
         QString appDirrPath = QCoreApplication::applicationDirPath();
-        songToUpload = QFileDialog::getOpenFileName(this, tr("Open File"), appDirrPath, tr("Wav Files (*.wav)"));
+        QString songToUpload = QFileDialog::getOpenFileName(this, tr("Open File"), appDirrPath, tr("Wav Files (*.wav)"));
         ui -> fieldFileLocation -> setText(songToUpload);
     } else {
         QMessageBox::warning(this, "WARNING", "You need to be connected in order to upload a song.");
@@ -142,9 +139,5 @@ void MainWindow::on_btn_add_file_clicked()
     //TO DO: BACKEND -> jak sie skonczy to ui ->fieldFileLocation -> setText("Upload completed!");
     //path do pliku znajduje sie w zmiennej songToUpload
     //widoczne sa pliki tylko z rozszerzeniem .wav i foldery w eksploratorze(tzw. QFileDialog)
-    this->client.sendSong(songToUpload.toStdString());
-
-    //std::thread sendSongThread = std::thread(&Client::sendSong, std::ref(this->client));
-    //sendSongThread.detach();
 }
 

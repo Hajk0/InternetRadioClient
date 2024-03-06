@@ -34,7 +34,6 @@ struct WavHeader {
 };
 #pragma pack(pop)
 
-
 class Stream
 {
 private:
@@ -42,6 +41,7 @@ private:
     int streamSock;
     int PORT;
     char* ip;
+    // bool quit;
     struct sockaddr_in clientAddr;
 public:
     Stream();
@@ -50,8 +50,6 @@ public:
     void writeWavHeader(std::vector<char>& buffer, uint32_t dataSize, uint32_t sampleRate, uint16_t numChannels, uint16_t bitsPerSample);
     int receiveData();
     void quitStream();
-
-    static bool quit;
 };
 
 #endif // STREAM_H
