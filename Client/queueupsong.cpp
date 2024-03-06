@@ -28,6 +28,7 @@ queueUpSong::queueUpSong(QWidget *parent, const string& message)
     for (int row = 0; row < numRows; row++){
         QTableWidgetItem *item = new QTableWidgetItem();
         item -> setText(QString::fromStdString(availableSongsVector[row]));
+        item -> setFlags(item->flags() & ~Qt::ItemIsEditable);
         ui -> tableWidget -> setItem(row, 0, item);
     }
     int columnWidth = 300;
