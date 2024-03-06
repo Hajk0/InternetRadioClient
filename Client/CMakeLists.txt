@@ -26,7 +26,6 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         client.h client.cpp
         stream.h stream.cpp
         queueupsong.cpp queueupsong.h queueupsong.ui
-        sender.h sender.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Client APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
