@@ -6,6 +6,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -15,7 +16,7 @@ private:
     int clientSock;
     sockaddr_in serverAddr{};
     int PORT = 12345;
-    const char* ip = "127.0.0.1";
+    const char* ip = "192.168.75.41";
 
 
 public:

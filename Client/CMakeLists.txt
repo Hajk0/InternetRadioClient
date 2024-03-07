@@ -42,7 +42,7 @@ else()
     else()
         add_executable(Client
             ${PROJECT_SOURCES}
-            client.cpp client.h queueupsong.cpp queueupsong.h queueupsong.ui stream.cpp stream.h
+            client.cpp client.h queueupsong.cpp queueupsong.h queueupsong.ui stream.cpp stream.h sender.cpp sender.h
         )
     endif()
 endif()

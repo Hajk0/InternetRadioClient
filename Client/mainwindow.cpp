@@ -121,6 +121,7 @@ void MainWindow::resumeMainWindowReject()
 void MainWindow::resumeMainWindowAccept()
 {
     qDebug() << "Resumed main window after accept";
+    this -> show();
     string pom = queueUpSongWindow ->getSongName();
     client.addToQueue(pom);
     delete queueUpSongWindow;
@@ -131,19 +132,23 @@ void MainWindow::resumeMainWindowAccept()
 void MainWindow::on_btn_add_file_clicked()
 {
 
-    QString songToUpload;
+    QString songToUpload = nullptr;
     if (this -> connected){
         QString appDirrPath = QCoreApplication::applicationDirPath();
         songToUpload = QFileDialog::getOpenFileName(this, tr("Open File"), appDirrPath, tr("Wav Files (*.wav)"));
-        ui -> fieldFileLocation -> setText(songToUpload);
     } else {
         QMessageBox::warning(this, "WARNING", "You need to be connected in order to upload a song.");
     }
 
-    //TO DO: BACKEND -> jak sie skonczy to ui ->fieldFileLocation -> setText("Upload completed!");
-    //path do pliku znajduje sie w zmiennej songToUpload
     //widoczne sa pliki tylko z rozszerzeniem .wav i foldery w eksploratorze(tzw. QFileDialog)
-    this->client.sendSong(songToUpload.toStdString());
+    if (songToUpload != ".wav" && songToUpload != nullptr){
+        this->client.sendSong(songToUpload.toStdString());
+        ui ->fieldFileLocation -> setText("Upload of song completed!");
+    } else {
+        ui -> fieldFileLocation -> setText("Unable to upload a song");
+    }
+
+    songToUpload = nullptr;
 
     //std::thread sendSongThread = std::thread(&Client::sendSong, std::ref(this->client));
     //sendSongThread.detach();

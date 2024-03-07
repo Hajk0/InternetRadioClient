@@ -10,7 +10,7 @@
 using namespace std;
 
 Client::Client() {
-    this->ip = "127.0.0.1";
+    this->ip = "192.168.75.28";
     this->PORT = 12345;
 }
 /*
